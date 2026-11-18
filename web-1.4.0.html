@@ -762,7 +762,7 @@ input:focus{outline:2px solid var(--hl);outline-offset:-1px}
 input:disabled{opacity:.4}
 
 /* sheet */
-.sheet{position:fixed;inset:0;background:rgba(0,10,25,.55);display:flex;align-items:flex-end;justify-content:center;z-index:900}
+.sheet{position:fixed;inset:0;background:rgba(0,10,25,.55);display:flex;align-items:flex-end;justify-content:center;z-index:1100}
 .sheet-card{background:var(--bg);width:100%;max-width:640px;max-height:88vh;border-radius:10px 10px 0 0;display:flex;flex-direction:column;border-top:3px solid var(--hl)}
 .sheet-h{display:flex;align-items:center;padding:6px 6px 6px 16px;border-bottom:1px solid var(--line)}
 .sheet-h h3{margin:0;flex:1;font-size:14px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
@@ -796,23 +796,31 @@ input:disabled{opacity:.4}
 /* map */
 #map{position:absolute;inset:0;background:var(--surface-2)}
 .leaflet-container{font-family:var(--f);background:var(--surface-2)}
-.mapbtns{position:absolute;right:10px;top:10px;z-index:500;display:flex;flex-direction:column;gap:8px}
-.mapbtns .ibtn{background:var(--navy);color:#fff;border-color:var(--navy-2);width:48px;height:48px;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.mapbtns{position:absolute;right:8px;top:8px;z-index:500;display:flex;flex-direction:column;gap:6px}
+.mapbtns .ibtn{background:rgba(0,30,60,.88);color:#fff;border-color:transparent;width:40px;height:40px;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+.mapbtns .ibtn svg{width:20px;height:20px}
 .mapbtns .ibtn.on{background:var(--hl);color:#00121f}
-.mapbtns .ibtn.rec{background:#e4002b;color:#fff;border-color:#e4002b}
-.mapback{position:absolute;left:10px;top:10px;z-index:500;width:48px;height:48px;background:var(--navy);color:#fff;border-color:var(--navy-2);box-shadow:0 2px 8px rgba(0,0,0,.3)}
-.mapspd{position:absolute;left:66px;top:10px;z-index:500;background:var(--navy);color:#fff;border-radius:var(--r);padding:6px 12px;font-weight:800;font-size:28px;box-shadow:0 2px 8px rgba(0,0,0,.3)}
-.coord{font-weight:800;font-size:15px;letter-spacing:.02em;text-align:center;color:var(--muted);padding:4px 0 0;cursor:pointer}
-.coord b{color:var(--ink)}
-.mapco{position:absolute;left:10px;bottom:24px;z-index:500;background:var(--navy);color:#fff;border-radius:var(--r);padding:7px 12px;font-weight:800;font-size:15px;box-shadow:0 2px 8px rgba(0,0,0,.3);cursor:pointer}
-.mapco small{display:block;font-size:10px;letter-spacing:.14em;color:var(--on-navy);text-transform:uppercase}
-.mapspd small{font-size:11px;color:var(--on-navy);margin-left:4px}
+.mapbtns .ibtn.rec{box-shadow:0 0 0 3px #e4002b}
+.mapspd{position:absolute;left:8px;top:8px;z-index:500;background:rgba(0,30,60,.88);color:#fff;border-radius:var(--r);padding:4px 10px;font-weight:800;font-size:22px;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+.mapspd small{font-size:10px;color:var(--on-navy);margin-left:3px}
+.mapco{position:absolute;left:8px;bottom:22px;z-index:500;background:rgba(0,30,60,.88);color:#fff;border-radius:var(--r);padding:5px 9px;font-weight:700;font-size:13px;cursor:pointer}
+.maptgt{position:absolute;left:50%;transform:translateX(-50%);top:8px;z-index:500;background:var(--hl);color:#00121f;border-radius:var(--r);padding:5px 4px 5px 10px;font-weight:800;font-size:14px;display:flex;align-items:center;gap:4px;max-width:58%;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+.maptgt span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.maptgt button{background:none;border:0;color:#00121f;padding:2px;display:grid}.maptgt svg{width:18px;height:18px}
+.ptk{display:flex;flex-direction:column;align-items:center;transform:translate(-50%,-100%)}
+.ptk b{background:var(--navy);color:#fff;font:800 11px var(--f);padding:2px 5px;border-radius:3px;border:1px solid var(--hl);white-space:nowrap;margin-bottom:2px}
+.ptk i{width:14px;height:14px;border-radius:50%;background:var(--hl);border:3px solid var(--navy);display:block}
+.tools{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tools .btn{min-height:64px;flex-direction:column;gap:4px;font-size:11.5px}
+.tools .btn.recon{background:#c8102e;border-color:#c8102e;color:#fff}
+.plist .it{cursor:pointer}
+.num.co{font-size:clamp(22px,min(7vw,4.6vh),46px);line-height:1.12}
 .me{width:28px;height:28px}
 .cn{background:var(--navy);color:#fff;font:800 11px var(--f);padding:2px 4px;border-radius:3px;white-space:nowrap;border:1px solid var(--hl)}
-#upd{position:fixed;left:8px;right:8px;top:58px;z-index:950;background:var(--navy-2);color:#fff;border-left:3px solid var(--hl);border-radius:var(--r);padding:10px 10px 10px 14px;display:flex;align-items:center;gap:10px;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+#upd{position:fixed;left:8px;right:8px;top:58px;z-index:1150;background:var(--navy-2);color:#fff;border-left:3px solid var(--hl);border-radius:var(--r);padding:10px 10px 10px 14px;display:flex;align-items:center;gap:10px;box-shadow:0 6px 20px rgba(0,0,0,.35)}
 #upd b{display:block;font-size:14px}#upd small{display:block;color:var(--on-navy);font-size:12px;margin-top:2px;line-height:1.35}
 #upd .btn{min-height:42px;padding:6px 12px;font-size:12px}
-#toast{position:fixed;left:50%;bottom:92px;transform:translateX(-50%);background:var(--navy);color:#fff;border-left:3px solid var(--hl);padding:11px 16px;border-radius:var(--r);font-weight:700;font-size:14px;z-index:999;max-width:90vw;box-shadow:0 4px 16px rgba(0,0,0,.35)}
+#toast{position:fixed;left:50%;bottom:92px;transform:translateX(-50%);background:var(--navy);color:#fff;border-left:3px solid var(--hl);padding:11px 16px;border-radius:var(--r);font-weight:700;font-size:14px;z-index:1200;max-width:90vw;box-shadow:0 4px 16px rgba(0,0,0,.35)}
 
 @media (orientation:landscape){
  .trips{flex-direction:row}
@@ -827,7 +835,7 @@ input:disabled{opacity:.4}
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute">
- <symbol id="i-trip" viewBox="0 0 24 24"><rect x="2.5" y="6.5" width="19" height="11" rx="2"/><path d="M7.5 6.5v11M12.5 6.5v11M17.5 6.5v11"/><path d="M4.5 12h1M9.5 10v4M14 10.5h2v1.5h-2v1.5h2"/><path d="M5 3.5h4M15 3.5h4"/></symbol>
+ <symbol id="i-trip" viewBox="0 0 24 24"><path d="M4 18a8 8 0 1 1 16 0"/><path d="M12 18l4-5"/><path d="M4 18h16"/></symbol>
  <symbol id="i-stage" viewBox="0 0 24 24"><circle cx="10" cy="14.5" r="6.5"/><path d="M10 14.5l2.6-2.6M8 3.5h4M10 3.5v4.5"/><path d="M16.5 2.5v8.5"/><path d="M16.5 2.5h5.5v4.4h-5.5"/><rect x="16.5" y="2.5" width="2.75" height="2.2" fill="currentColor" stroke="none"/><rect x="19.25" y="4.7" width="2.75" height="2.2" fill="currentColor" stroke="none"/></symbol>
  <symbol id="i-notes" viewBox="0 0 24 24"><path d="M6 21.5c0-6 3-7.5 6.5-8.5s5.5-3 5.5-8"/><path d="M15 6.5l3-3.5 3 3.5"/><path d="M2.5 6h5M2.5 9.5h3.5"/></symbol>
  <symbol id="i-map" viewBox="0 0 24 24"><path d="M12 21.5s-6.5-5.8-6.5-11.5a6.5 6.5 0 0 1 13 0c0 5.7-6.5 11.5-6.5 11.5z"/><circle cx="12" cy="10" r="2.4"/></symbol>
@@ -843,6 +851,8 @@ input:disabled{opacity:.4}
  <symbol id="i-print" viewBox="0 0 24 24"><path d="M6 9V3h12v6M6 18H4v-7h16v7h-2M7 14h10v7H7z"/></symbol>
  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></symbol>
  <symbol id="i-dl" viewBox="0 0 24 24"><path d="M12 4v12M7 11l5 5 5-5M4 20h16"/></symbol>
+ <symbol id="i-dots" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.6" fill="currentColor" stroke="none"/></symbol>
+ <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21.5s-6.5-5.8-6.5-11.5a6.5 6.5 0 0 1 13 0c0 5.7-6.5 11.5-6.5 11.5z"/><path d="M12 7v6M9 10h6"/></symbol>
  <symbol id="i-loc" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></symbol>
  <symbol id="i-fit" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></symbol>
  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
@@ -889,10 +899,8 @@ input:disabled{opacity:.4}
  </div>
  <div class="row">
   <div class="tile"><div class="lbl" data-t="speed"></div><div class="num md" id="spd">0</div></div>
-  <div class="tile"><div class="lbl" data-t="heading"></div><div class="num md" id="hdg">—</div></div>
-  <div class="tile"><div class="lbl" data-t="odo"></div><div class="num md" id="odo">0</div></div>
+  <div class="tile" data-copy="1" style="flex:2;cursor:pointer"><div class="lbl"><span data-t="positionT"></span><em data-t="tapCopy"></em></div><div class="num co" id="tripLat">—</div><div class="num co" id="tripLon"></div></div>
  </div>
- <div class="coord" id="tripCo" data-copy="1">—</div>
 </section>
 
 <!-- ============ STAGE ============ -->
@@ -922,7 +930,6 @@ input:disabled{opacity:.4}
   <div class="phead"><h2 data-t="recceTitle"></h2><button class="ibtn" id="pnImport" title="GPX"><svg class="i"><use href="#i-up"/></svg></button></div>
   <button class="btn pri" id="pnRecBtn" style="min-height:60px"><svg class="i"><use href="#i-rec"/></svg><span data-t="recordRecce"></span></button>
   <div id="pnStages" class="slist"></div>
-  <div class="hint" data-t="pnHint"></div>
  </div>
  <!-- recording -->
  <div id="pnRec" hidden style="display:flex;flex-direction:column;gap:8px;flex:1">
@@ -969,17 +976,13 @@ input:disabled{opacity:.4}
 <!-- ============ MAP ============ -->
 <section class="page" id="p-map">
  <div id="map"></div>
- <button class="ibtn mapback" data-go="menu"><svg class="i"><use href="#i-back"/></svg></button>
- <div class="mapco" id="mapCo" data-copy="1"><small data-t="position"></small><span id="mapCoT">—</span></div>
  <div class="mapspd" id="mapSpd">0<small>km/h</small></div>
  <div class="mapbtns">
   <button class="ibtn on" id="mFollow"><svg class="i"><use href="#i-loc"/></svg></button>
-  <button class="ibtn" id="mFit"><svg class="i"><use href="#i-fit"/></svg></button>
-  <button class="ibtn" id="mRec"><svg class="i"><use href="#i-rec"/></svg></button>
-  <button class="ibtn" id="mTrk"><svg class="i"><use href="#i-dl"/></svg></button>
-  <button class="ibtn" id="mImport"><svg class="i"><use href="#i-up"/></svg></button>
-  <button class="ibtn" id="mClear" hidden><svg class="i"><use href="#i-x"/></svg></button>
+  <button class="ibtn" id="mMore"><svg class="i"><use href="#i-dots"/></svg></button>
  </div>
+ <div class="mapco" id="mapCo" data-copy="1"><span id="mapCoT">—</span></div>
+ <div class="maptgt" id="mTgt" hidden><span id="mTgtT"></span><button id="mTgtX"><svg class="i"><use href="#i-x"/></svg></button></div>
 </section>
 
 <!-- ============ REGULARITY ============ -->
@@ -1023,7 +1026,7 @@ input:disabled{opacity:.4}
 
 <!-- ============ LIAISON ============ -->
 <section class="page" id="p-liaison">
- <div class="phead"><h2 data-t="liaison"></h2><button class="ibtn" id="liEdit"><svg class="i"><use href="#i-edit"/></svg></button></div>
+ <div class="phead"><button class="back" data-go="menu"><svg class="i"><use href="#i-back"/></svg></button><h2 data-t="liaison"></h2><button class="ibtn" id="liEdit"><svg class="i"><use href="#i-edit"/></svg></button></div>
  <div class="row lr" style="flex-direction:column">
   <div class="tile"><div class="lbl" data-t="rallyTime"></div><div class="num lg" id="liClock">--:--:--</div></div>
   <div class="tile"><div class="lbl"><span data-t="toNext"></span><em id="liNextName"></em></div><div class="num xl" id="liCd">--:--</div></div>
@@ -1046,7 +1049,7 @@ input:disabled{opacity:.4}
  <div class="tiles3">
   <button class="mtile" data-go="reg"><svg class="i"><use href="#i-reg"/></svg><span data-t="regularity"></span></button>
   <button class="mtile" data-go="raid"><svg class="i"><use href="#i-raid"/></svg><span>Rally Raid</span></button>
-  <button class="mtile" data-go="map"><svg class="i"><use href="#i-map"/></svg><span data-t="nMap"></span></button>
+  <button class="mtile" data-go="liaison"><svg class="i"><use href="#i-lia"/></svg><span data-t="liaison"></span></button>
  </div>
  <div class="gh" data-t="settings"></div>
  <div class="grp">
@@ -1085,7 +1088,7 @@ input:disabled{opacity:.4}
  <button class="on" data-p="trip"><svg class="i"><use href="#i-trip"/></svg><span data-t="nTrip"></span></button>
  <button data-p="stage"><svg class="i"><use href="#i-stage"/></svg><span data-t="nStage"></span></button>
  <button data-p="notes"><svg class="i"><use href="#i-notes"/></svg><span data-t="nNotes"></span></button>
- <button data-p="liaison"><svg class="i"><use href="#i-lia"/></svg><span data-t="nLia"></span></button>
+ <button data-p="map"><svg class="i"><use href="#i-map"/></svg><span data-t="nMap"></span></button>
  <button data-p="menu"><svg class="i"><use href="#i-menu"/></svg><span data-t="nMenu"></span></button>
 </nav>
 
@@ -1168,6 +1171,8 @@ const TX={
  sent:['Τελευταία αποστολή','Last sent'],storageFull:['Η μνήμη γέμισε · σβήσε παλιές ειδικές','Storage full · delete old stages'],from:['Από','From'],spdK:['Ταχύτητα','Speed'],limK:['Όριο','Limit'],addRow:['Νέα γραμμή','Add row'],
  startTime:['Ώρα εκκίνησης','Start time'],set:['Ορισμός','Set'],stageStarted:['Εκκίνηση','Start'],tcSay:['Έλεγχος','Control'],slowSay:['κόψε','slow down'],fastSay:['ανέβασε','speed up'],onSay:['στην ώρα','on time'],
  notesN:['νότες','notes'],
+ positionT:['Θέση','Position'],tapCopy:['πάτα για αντιγραφή','tap to copy'],mapTools:['Χάρτης','Map'],recStop:['Τέλος καταγραφής','Stop recording'],routeGpx:['Διαδρομή · GPX','Route · GPX'],pointHere:['Σημείο στη θέση μου','Point at my position'],pointsT:['Σημεία','Points'],pointsN:['σημεία','points'],importGpx:['Εισαγωγή GPX','Import GPX'],fitAll:['Όλα στην οθόνη','Fit all'],clearRoute:['Αφαίρεση GPX','Remove GPX'],
+ longPress:['Κράτα πατημένο το δάχτυλο στον χάρτη για νέο σημείο.','Long-press the map to add a point.'],newPoint:['Νέο σημείο','New point'],pointName:['Όνομα','Name'],pointDef:['Σημείο','Point'],goTo:['Πήγαινε εκεί','Go there'],noFix:['Δεν υπάρχει σήμα GPS','No GPS fix'],
  nLia:['Συνδετικό','Liaison'],recceTitle:['Recce · Pacenotes','Recce · Pacenotes'],capNow:['CAP (πορεία)','CAP (heading)'],capTgt:['CAP roadbook','Roadbook CAP'],total:['Ολικό','Total'],partial:['Μερικό','Partial'],resetPartial:['Μηδέν μερικού','Reset partial'],
  zoneOn:['Ζώνη ορίου · ON','Speed zone · ON'],zoneOff:['Ζώνη ορίου (DZ)','Speed zone (DZ)'],zoneLim:['Όριο ζώνης','Zone limit'],raidHint:['Γράψε το CAP της οδηγίας του roadbook. Το βέλος δείχνει προς τα πού να στρίψεις και πόσες μοίρες λείπουν. Το Enter του Bluetooth κουμπιού μηδενίζει το μερικό.','Enter the CAP of the roadbook instruction. The arrow shows which way to turn and by how many degrees. The Bluetooth Enter key resets the partial.'],
  pass2:['2ο πέρασμα recce','Recce 2nd pass'],limHint:['Το όριο του κανονισμού για την αναγνώριση. Άφησε κενό αν δεν υπάρχει. Αλλαγές ορίου (π.χ. χωριά) προσθέτεις με το ✏️ κατά την καταγραφή.','The recce speed limit from the regulations. Leave empty if none. Add limit changes (e.g. villages) with ✏️ while recording.'],
@@ -1345,13 +1350,13 @@ $('#calIn').addEventListener('change',e=>{const n=num(e.target.value);if(n&&n>0.
 $('#trkUrl').addEventListener('change',e=>{S.trkUrl=e.target.value.trim();save()});
 $('#trkId').addEventListener('change',e=>{S.trkId=e.target.value.trim();save()});
 function trkLen(){let d=0;for(let i=1;i<TRK.length;i++)d+=hav({lat:TRK[i-1][0],lon:TRK[i-1][1]},{lat:TRK[i][0],lon:TRK[i][1]});return d}
-function recUI(){const b=$('#mRec');b.classList.toggle('rec',rec)}
-$('#mRec').onclick=()=>{rec=!rec;save();recUI();toast(rec?t('recOn'):t('recOff'));beep(rec?1200:800,.12)};
-$('#mTrk').onclick=()=>sheet(t('recRoute'),`<div class="row"><div class="tile"><div class="lbl">${t('dist')}</div><div class="num md">${fd(trkLen())}<span class="u">${U.dl}</span></div></div><div class="tile"><div class="lbl">${t('points')}</div><div class="num md">${TRK.length}</div></div></div>
+function recUI(){const b=$('#mMore');if(b)b.classList.toggle('rec',rec)}
+function toggleRec(){rec=!rec;save();recUI();toast(rec?t('recOn'):t('recOff'));beep(rec?1200:800,.12)}
+function routeSheet(){sheet(t('recRoute'),`<div class="row"><div class="tile"><div class="lbl">${t('dist')}</div><div class="num md">${fd(trkLen())}<span class="u">${U.dl}</span></div></div><div class="tile"><div class="lbl">${t('points')}</div><div class="num md">${TRK.length}</div></div></div>
  <div class="hint">${t('recHint2')}</div>
  <button class="btn pri" id="tg"><svg class="i"><use href="#i-dl"/></svg>${t('exportGpx')}</button><button class="btn" id="tc"><svg class="i"><use href="#i-trash"/></svg>${t('clear')}</button>`,
  b=>{b.querySelector('#tg').onclick=()=>{if(!TRK.length){toast(t('noTrack'));return}saveFile('racetrip-'+new Date().toISOString().slice(0,16).replace(/[:T]/g,'-')+'.gpx',toGpx(TRK,'RaceTrip'))};
-  b.querySelector('#tc').onclick=()=>{if(!TRK.length||!confirm(t('confirmDel')))return;TRK=[];LS.set('trk',TRK);mapTrack();closeSheet()}});
+  b.querySelector('#tc').onclick=()=>{if(!TRK.length||!confirm(t('confirmDel')))return;TRK=[];LS.set('trk',TRK);mapTrack();closeSheet()}})}
 $('#keysOpen').onclick=()=>sheet(t('keys'),`<div class="hint" style="font-size:14px;color:var(--ink)">${t('keysHint')}</div>`);
 $('#calOpen').onclick=()=>sheet(t('calTitle'),`<div class="hint">${t('calHint')}</div><div class="fld"><label>${t('calOff')} (${U.dl})</label><input type="number" step="0.01" inputmode="decimal" id="ck"></div><button class="btn pri" id="cok">${t('calibrate')}</button>`,
  b=>{b.querySelector('#cok').onclick=()=>{const k=num(b.querySelector('#ck').value),m=Math.abs(D.trips[0].d);if(!k||m<100){toast(t('calNeed'));return}
@@ -1366,7 +1371,8 @@ function saveFile(name,content){if(window.Android&&Android.saveFile){toast(Andro
 /* ================= GPX import ================= */
 let fileCb=null;
 function pickGpx(cb){fileCb=cb;const f=$('#fileIn');f.value='';f.click()}
-$('#fileIn').addEventListener('change',e=>{const f=e.target.files&&e.target.files[0];if(!f||!fileCb)return;const r=new FileReader();r.onload=()=>{const pts=parseGpx(String(r.result));if(pts.length<2){toast(t('gpxBad'));return}fileCb(pts,f.name.replace(/\.[^.]+$/,''))};r.readAsText(f)});
+$('#fileIn').addEventListener('change',e=>{const f=e.target.files&&e.target.files[0];if(!f||!fileCb)return;const r=new FileReader();r.onload=()=>{const tx=String(r.result),pts=parseGpx(tx),w=parseWpt(tx);if(pts.length<2&&!w.length){toast(t('gpxBad'));return}fileCb(pts,f.name.replace(/\.[^.]+$/,''),w)};r.readAsText(f)});
+function parseWpt(txt){try{const x=new DOMParser().parseFromString(txt,'application/xml');return [...x.getElementsByTagName('wpt')].map((p,i)=>{const n=p.getElementsByTagName('name')[0];return{lat:+p.getAttribute('lat'),lon:+p.getAttribute('lon'),name:n?n.textContent.trim():'WP '+(i+1)}}).filter(p=>isFinite(p.lat)&&isFinite(p.lon))}catch(e){return[]}}
 function parseGpx(txt){try{const x=new DOMParser().parseFromString(txt,'application/xml');let n=[...x.getElementsByTagName('trkpt')];if(!n.length)n=[...x.getElementsByTagName('rtept')];
  return n.map(p=>[+p.getAttribute('lat'),+p.getAttribute('lon'),0]).filter(p=>isFinite(p[0])&&isFinite(p[1]))}catch(e){return[]}}
 
@@ -1542,9 +1548,10 @@ function mapInit(){if(MAP||!window.L)return;
  mTrk=L.polyline([],{color:'#00a3e0',weight:5,opacity:.9}).addTo(MAP);
  mRoute=L.polyline([],{color:'#e4002b',weight:4,opacity:.8,dashArray:'8 8'}).addTo(MAP);
  mStage=L.polyline([],{color:'#f0b54a',weight:5,opacity:.9}).addTo(MAP);
- mCorners=L.layerGroup().addTo(MAP);
+ mCorners=L.layerGroup().addTo(MAP);mPts=L.layerGroup().addTo(MAP);
+ MAP.on('contextmenu',e=>newPoint(e.latlng.lat,e.latlng.lng));
  MAP.on('dragstart',()=>{follow=false;$('#mFollow').classList.remove('on')});
- mapTrack();mapRoute();mapStage();mapFix()}
+ mapTrack();mapRoute();mapStage();mapPts();mapFix()}
 function meIcon(h){return L.divIcon({className:'',iconSize:[28,28],iconAnchor:[14,14],html:`<svg class="me" viewBox="0 0 28 28" style="transform:rotate(${Math.round(h||0)}deg)"><circle cx="14" cy="14" r="12" fill="#001e3c" stroke="#fff" stroke-width="2.5"/><path d="M14 5l6 13-6-3-6 3z" fill="#00a3e0"/></svg>`})}
 let lastIconH=-999;
 function mapFix(){if(!MAP||!G.fix)return;const ll=[G.fix.lat,G.fix.lon];
@@ -1552,16 +1559,53 @@ function mapFix(){if(!MAP||!G.fix)return;const ll=[G.fix.lat,G.fix.lon];
  if(follow&&page==='map')MAP.setView(ll,Math.max(MAP.getZoom(),15),{animate:false});
  if(rec&&mTrk&&TRK.length)mTrk.addLatLng([TRK[TRK.length-1][0],TRK[TRK.length-1][1]])}
 function mapTrack(){if(mTrk)mTrk.setLatLngs(TRK.map(p=>[p[0],p[1]]))}
-function mapRoute(){if(!mRoute)return;mRoute.setLatLngs(ROUTE?ROUTE.map(p=>[p[0],p[1]]):[]);$('#mClear').hidden=!ROUTE}
+function mapRoute(){if(!mRoute)return;mRoute.setLatLngs(ROUTE?ROUTE.map(p=>[p[0],p[1]]):[])}
 function mapStage(){if(!mStage)return;const st=curStage();mCorners.clearLayers();
  if(!st){mStage.setLatLngs([]);return}const P=stageGeo(st);mStage.setLatLngs(P.map(p=>[p.lat,p.lon]));
  st.notes.forEach(n=>{const p=P[Math.min(P.length-1,Math.round(n.s/STEP))];if(p)L.marker([p.lat,p.lon],{interactive:false,icon:L.divIcon({className:'',iconAnchor:[0,10],html:`<span class="cn">${n.dir}${n.g==='H'?'H':n.g}</span>`})}).addTo(mCorners)})}
 function mapTheme(){}
 $('#mFollow').onclick=()=>{follow=!follow;$('#mFollow').classList.toggle('on',follow);if(follow)mapFix()};
-$('#mFit').onclick=()=>{if(!MAP)return;const ls=[...(ROUTE||[]).map(p=>[p[0],p[1]]),...TRK.map(p=>[p[0],p[1]])];const st=curStage();if(st)stageGeo(st).forEach(p=>ls.push([p.lat,p.lon]));
- if(ls.length>1){follow=false;$('#mFollow').classList.remove('on');MAP.fitBounds(L.latLngBounds(ls),{padding:[30,30]})}};
-$('#mImport').onclick=()=>pickGpx(pts=>{ROUTE=pts;LS.set('route',ROUTE);mapRoute();toast(t('gpxLoaded'));$('#mFit').click()});
-$('#mClear').onclick=()=>{ROUTE=null;LS.set('route',null);mapRoute()};
+function mapFit(){if(!MAP)return;const ls=[...(ROUTE||[]).map(p=>[p[0],p[1]]),...TRK.map(p=>[p[0],p[1]]),...PTS.map(p=>[p.lat,p.lon])];const st=curStage();if(st)stageGeo(st).forEach(p=>ls.push([p.lat,p.lon]));
+ if(ls.length>1){follow=false;$('#mFollow').classList.remove('on');MAP.fitBounds(L.latLngBounds(ls),{padding:[40,40]})}}
+$('#mMore').onclick=()=>{const tb=(id,ic,label,cls='')=>`<button class="btn ${cls}" id="${id}"><svg class="i"><use href="#${ic}"/></svg>${label}</button>`;
+ sheet(t('mapTools'),`<div class="tools">
+  ${tb('x_rec','i-rec',rec?t('recStop'):t('recRoute'),rec?'recon':'')}${tb('x_trk','i-dl',t('routeGpx'))}
+  ${tb('x_here','i-pin',t('pointHere'))}${tb('x_pts','i-list',`${t('pointsT')} (${PTS.length})`)}
+  ${tb('x_imp','i-up',t('importGpx'))}${tb('x_fit','i-fit',t('fitAll'))}
+  ${ROUTE?tb('x_clr','i-x',t('clearRoute')):''}</div><div class="hint">${t('longPress')}</div>`,
+ b=>{const on=(id,fn)=>{const e=b.querySelector('#'+id);if(e)e.onclick=fn};
+  on('x_rec',()=>{toggleRec();closeSheet()});on('x_trk',routeSheet);
+  on('x_here',()=>{if(!G.fix){toast(t('noFix'));return}newPoint(G.fix.lat,G.fix.lon)});on('x_pts',pointsList);
+  on('x_imp',()=>{closeSheet();pickGpx((pts,name,w)=>{if(pts.length>1){ROUTE=pts;LS.set('route',ROUTE);mapRoute()}if(w&&w.length){w.forEach(q=>PTS.push({id:'p'+Date.now()+Math.random().toString(36).slice(2,6),name:q.name,lat:q.lat,lon:q.lon,t:Date.now()}));savePts();mapPts()}
+   toast(`${t('gpxLoaded')}${w&&w.length?` · ${w.length} ${t('pointsN')}`:''}`);mapFit()})});
+  on('x_fit',()=>{closeSheet();mapFit()});on('x_clr',()=>{ROUTE=null;LS.set('route',null);mapRoute();closeSheet()})})};
+
+/* map points (waypoints) */
+let PTS=LS.get('pts',[]),TGT=null,mPts=null;
+const savePts=()=>LS.set('pts',PTS);
+function ptIcon(p){return L.divIcon({className:'',iconSize:[0,0],html:`<div class="ptk"><b>${esc(p.name)}</b><i></i></div>`})}
+function mapPts(){if(!mPts)return;mPts.clearLayers();PTS.forEach(p=>{const m=L.marker([p.lat,p.lon],{icon:ptIcon(p)});m.on('click',()=>pointSheet(p.id));m.addTo(mPts)})}
+function fromMe(p){if(!G.fix)return null;const a={lat:G.fix.lat,lon:G.fix.lon};return{d:hav(a,p),b:brg(a,p)}}
+function newPoint(lat,lon){const n=PTS.length+1;sheet(t('newPoint'),`<div class="fld"><label>${t('pointName')}</label><input type="text" id="pn" value="${t('pointDef')} ${n}"></div>
+ <div class="hint" style="color:var(--ink);font-weight:700">${lat.toFixed(6)}, ${lon.toFixed(6)}</div><button class="btn pri" id="pok"><svg class="i"><use href="#i-pin"/></svg>${t('save')}</button>`,
+ b=>{const i=b.querySelector('#pn');setTimeout(()=>{i.focus();i.select()},60);b.querySelector('#pok').onclick=()=>{PTS.push({id:'p'+Date.now(),name:i.value.trim()||`${t('pointDef')} ${n}`,lat,lon,t:Date.now()});savePts();mapPts();closeSheet();beep(1100,.1)}})}
+function pointSheet(id){const p=PTS.find(x=>x.id===id);if(!p)return;const r=fromMe(p);
+ sheet(p.name,`<div class="fld"><label>${t('pointName')}</label><input type="text" id="pn" value="${esc(p.name)}"></div>
+  <div class="row"><div class="tile" data-cp="1" style="cursor:pointer"><div class="lbl"><span data-t="positionT">${t('positionT')}</span><em>${t('tapCopy')}</em></div><div style="font-weight:800;font-size:17px;margin-top:4px">${p.lat.toFixed(6)}, ${p.lon.toFixed(6)}</div></div></div>
+  ${r?`<div class="row"><div class="tile"><div class="lbl">${t('dist')}</div><div class="num md">${fd(r.d)}<span class="u">${U.dl}</span></div></div><div class="tile"><div class="lbl">CAP</div><div class="num md">${pad(Math.round(r.b)%360,3)}°</div></div></div>`:''}
+  <button class="btn pri" id="pgo"><svg class="i"><use href="#i-loc"/></svg>${t('goTo')}</button>
+  <div class="row"><button class="btn" id="psv">${t('save')}</button><button class="btn red" id="pdl"><svg class="i"><use href="#i-trash"/></svg>${t('del')}</button></div>`,
+ b=>{const nm=()=>{p.name=b.querySelector('#pn').value.trim()||p.name;savePts();mapPts()};
+  b.querySelector('[data-cp]').onclick=()=>copyText(`${p.lat.toFixed(6)}, ${p.lon.toFixed(6)}`);
+  b.querySelector('#pgo').onclick=()=>{nm();TGT=p.id;closeSheet();if(MAP){follow=false;$('#mFollow').classList.remove('on');const ls=[[p.lat,p.lon]];if(G.fix)ls.push([G.fix.lat,G.fix.lon]);MAP.fitBounds(L.latLngBounds(ls),{padding:[60,60],maxZoom:16})}};
+  b.querySelector('#psv').onclick=()=>{nm();closeSheet()};
+  b.querySelector('#pdl').onclick=()=>{if(!confirm(t('confirmDel')))return;PTS=PTS.filter(x=>x!==p);if(TGT===p.id)TGT=null;savePts();mapPts();closeSheet()}})}
+function pointsList(){sheet(`${t('pointsT')} · ${PTS.length}`,`<div class="grp plist">${PTS.map(p=>{const r=fromMe(p);return `<div class="it" data-pt="${p.id}"><span>${esc(p.name)}<small>${p.lat.toFixed(5)}, ${p.lon.toFixed(5)}</small></span>${r?`<b>${fd(r.d)} ${U.dl}</b>`:''}<svg class="i chev"><use href="#i-chev"/></svg></div>`}).join('')||'<div class="it"><span class="hint">'+t('longPress')+'</span></div>'}</div>
+ <div class="row"><button class="btn" id="pex"><svg class="i"><use href="#i-dl"/></svg>GPX</button><button class="btn red" id="pcl"><svg class="i"><use href="#i-trash"/></svg>${t('clear')}</button></div>`,
+ b=>{b.querySelector('.plist').addEventListener('click',e=>{const r=e.target.closest('[data-pt]');if(r)pointSheet(r.dataset.pt)});
+  b.querySelector('#pex').onclick=()=>{if(!PTS.length)return;saveFile('racetrip-points.gpx',`<?xml version="1.0" encoding="UTF-8"?>\n<gpx version="1.1" creator="RaceTrip" xmlns="http://www.topografix.com/GPX/1/1">\n${PTS.map(p=>`<wpt lat="${p.lat.toFixed(7)}" lon="${p.lon.toFixed(7)}"><name>${esc(p.name)}</name></wpt>`).join('\n')}\n</gpx>\n`)};
+  b.querySelector('#pcl').onclick=()=>{if(!PTS.length||!confirm(t('confirmDel')))return;PTS=[];TGT=null;savePts();mapPts();closeSheet()}})}
+$('#mTgtX').onclick=()=>{TGT=null;$('#mTgt').hidden=true};
 
 /* ================= keys ================= */
 let page='trip';
@@ -1576,7 +1620,7 @@ window.rtKey=key;
 document.addEventListener('keydown',e=>{const tg=e.target.tagName;if(tg==='INPUT'||tg==='TEXTAREA')return;
  const map={AudioVolumeUp:'VolumeUp',AudioVolumeDown:'VolumeDown',MediaTrackNext:'MediaNext',MediaTrackPrevious:'MediaPrev'};const k=map[e.key]||e.key;
  if(['VolumeUp','VolumeDown','ArrowUp','ArrowDown','PageUp','PageDown','Enter',' ','ArrowLeft','ArrowRight','MediaNext','MediaPrev','MediaPlayPause'].includes(k)){e.preventDefault();if(!e.repeat)key(k)}});
-const NAVOF={reg:'menu',raid:'menu',map:'menu'};
+const NAVOF={reg:'menu',raid:'menu',liaison:'menu'};
 function go(p){page=p;closeSheet();$$('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.p===(NAVOF[p]||p)));$$('.page').forEach(s=>s.classList.toggle('on',s.id==='p-'+p));
  if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();
  if(p==='map'){mapInit();setTimeout(()=>{if(MAP){MAP.invalidateSize();if(follow)mapFix()}},60)}if(p==='notes')renderPN();setTimeout(()=>$$('#p-'+p+' .num').forEach(e=>{e._fl=-1;fit(e)}),30)}
@@ -1606,9 +1650,7 @@ function tick(){
   setH('t0',fd(D.trips[0].d)+uD());setH('t1',fd(D.trips[1].d)+uD());
   setT('dir0',D.trips[0].dir<0?'▼':'');setT('dir1',D.trips[1].dir<0?'▼':'');
   setH('spd',fs(v)+uS());
-  setH('hdg',G.hdg==null?'—':`${pad(Math.round(G.hdg)%360,3)}°<span class="u">${CARD[Math.round(G.hdg/45)%8]}</span>`);
-  setH('odo',fd(D.odo,1)+uD());
-  setH('tripCo',G.fix?`<b>${G.fix.lat.toFixed(6)}</b> · <b>${G.fix.lon.toFixed(6)}</b>`:'—');
+  setT('tripLat',G.fix?G.fix.lat.toFixed(6):'—');setT('tripLon',G.fix?G.fix.lon.toFixed(6):'');
  }
  if(page==='stage'){let el=0,label='';
   if(st.s==='run'){el=now-st.t0;label=t('running')}else if(st.s==='done'){el=st.t1-st.t0;label=t('done')}else if(st.s==='armed')label=t('armed');else if(st.s==='wait'){el=-(st.at-now);label=t('waiting')}
@@ -1641,7 +1683,8 @@ function tick(){
    const left=li.dist-li.d;setH('liReq',li.dist&&rem>0&&left>0?(left/(rem/1000)*U.sp).toFixed(0)+uS():'—')}
   else{s.className='st s-idle';setT('liStatus',t('noTC'));setT('liCd','--:--');setT('liLast','--:--');setT('liDue','--:--');setT('liReq','—')}}
  if(page==='menu'){if(S.trkOn&&trkSent)setT('liveInfo',`${t('sent')} ${fclock(trkSent)}`)}
- if(page==='map'){setH('mapSpd',fs(v)+`<small>${U.sl}</small>`);setT('mapCoT',G.fix?coStr():'—')}
+ if(page==='map'){setH('mapSpd',fs(v)+`<small>${U.sl}</small>`);setT('mapCoT',G.fix?coStr():'—');
+  const tp=TGT&&PTS.find(x=>x.id===TGT),tg=$('#mTgt');if(tp){const r=fromMe(tp);tg.hidden=false;setT('mTgtT',r?`${tp.name} · ${fd(r.d)} ${U.dl} · ${pad(Math.round(r.b)%360,3)}°`:tp.name)}else tg.hidden=true}
  pnTick();if(page==='notes')pnRender();
  liveTick();
 }
@@ -1653,7 +1696,7 @@ function copyText(txt){if(!txt)return;let ok=false;try{const a=document.createEl
 document.addEventListener('click',e=>{if(e.target.closest('[data-copy]'))copyText(coStr())});
 
 /* ================= updates ================= */
-const WEBV='1.3.1';
+const WEBV='1.4.0';
 function appInfo(){try{if(window.Android&&Android.appInfo){const [n,c,w]=Android.appInfo().split('|');return{n,c:+c,w}}}catch(e){}return{n:'web',c:0,w:WEBV}}
 function showUpd(title,notes,btn,fn){$('#updT').textContent=title;$('#updN').textContent=notes||'';const b=$('#updGo');b.textContent=btn;b.onclick=fn;$('#upd').hidden=false}
 $('#updX').onclick=()=>$('#upd').hidden=true;
