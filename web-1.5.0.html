@@ -1069,8 +1069,12 @@ input:disabled{opacity:.4}
  <div class="gh" data-t="live"></div>
  <div class="grp">
   <div class="it"><span><span data-t="liveOn"></span><small id="liveInfo" data-t="liveSub"></small></span><button class="sw" data-sw="trkOn"></button></div>
-  <div class="it"><span data-t="server"></span><input type="url" id="trkUrl" placeholder="http://track.racehq.gr:5055" style="width:58%"></div>
-  <div class="it"><span data-t="devId"></span><input type="text" id="trkId" placeholder="car-12" style="width:58%"></div>
+  <div class="it tap" id="hqRace"><span><span data-t="hqRace"></span><small id="hqRaceV"></small></span><svg class="i chev"><use href="#i-chev"/></svg></div>
+  <div class="it" id="hqWhoRow"><span data-t="hqWho"></span><div class="seg" data-s="hqWho"><button data-v="crew" data-t="hqCrew"></button><button data-v="post" data-t="hqPost"></button></div></div>
+  <div class="it" id="hqNoRow"><span data-t="hqNo"></span><input type="text" inputmode="numeric" id="hqNo" placeholder="12"></div>
+  <div class="it tap" id="hqPostRow"><span><span data-t="hqPost"></span><small id="hqPostV"></small></span><svg class="i chev"><use href="#i-chev"/></svg></div>
+  <div class="it" id="trkUrlRow"><span data-t="server"></span><input type="url" id="trkUrl" placeholder="http://track.racehq.gr:5055" style="width:58%"></div>
+  <div class="it" id="trkIdRow"><span data-t="devId"></span><input type="text" id="trkId" placeholder="car-12" style="width:58%"></div>
   <div class="it"><span data-t="every"></span><div class="seg" data-s="trkInt" data-n="1"><button data-v="5">5s</button><button data-v="10">10s</button><button data-v="30">30s</button></div></div>
  </div>
  <div class="gh" data-t="more"></div>
@@ -1108,7 +1112,7 @@ input:disabled{opacity:.4}
 /* ================= core helpers ================= */
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const LS={get(k,d){try{const v=localStorage.getItem('rt_'+k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem('rt_'+k,JSON.stringify(v));return true}catch(e){return false}}};
-const S=Object.assign({units:'km',cal:1,lang:'el',theme:'night',beep:true,voice:true,maxAcc:30,step:10,trkUrl:'',trkId:'',trkOn:false,trkInt:10,demo:false},LS.get('set',{}));
+const S=Object.assign({units:'km',cal:1,lang:'el',theme:'night',beep:true,voice:true,maxAcc:30,step:10,trkUrl:'',trkId:'',trkOn:false,trkInt:10,hqRace:'',hqRaceName:'',hqWho:'crew',hqNo:'',hqPost:'',hqPostName:'',demo:false},LS.get('set',{}));
 const DEF={trips:[{d:0,dir:1},{d:0,dir:1}],odo:0,
  st:{s:'idle',t0:0,t1:0,d:0,max:0,at:0},
  rg:{segs:[{from:0,v:50/3.6}],s:'idle',t0:0,d:0,tcs:[],at:0},
@@ -1154,7 +1158,7 @@ const TX={
  calHint:['Μηδένισε το Τριπ 1 σε γνωστό σημείο, οδήγησε ως άλλο γνωστό σημείο και γράψε την επίσημη απόσταση.','Reset Trip 1 at a known point, drive to another and enter the official distance.'],
  calOff:['Επίσημη απόσταση','Official distance'],calibrate:['Βαθμονόμηση','Calibrate'],step:['Βήμα +/− (μ)','+/− step (m)'],maxAcc:['Όριο ακρίβειας GPS (μ)','GPS accuracy limit (m)'],maxAccSub:['Αγνοεί χειρότερο σήμα','Ignores worse fixes'],
  track:['Διαδρομή','Route'],recRoute:['Καταγραφή διαδρομής','Record route'],exportGpx:['Εξαγωγή GPX','Export GPX'],clear:['Καθαρισμός','Clear'],points:['σημεία','points'],
- live:['Live tracking','Live tracking'],liveOn:['Αποστολή θέσης','Share position'],liveSub:['Traccar · θέλει δεδομένα','Traccar · needs data'],server:['Server','Server'],devId:['ID συσκευής','Device ID'],every:['Κάθε','Every'],
+ live:['Live tracking','Live tracking'],hqRace:['Αγώνας Race HQ','Race HQ event'],hqNone:['Άλλος server (Traccar)','Other server (Traccar)'],hqWho:['Είμαι','I am'],hqCrew:['Πλήρωμα','Crew'],hqPost:['Θέση','Post'],hqNo:['Αριθμός αυτοκινήτου','Car number'],hqPick:['Επίλεξε','Choose'],hqNoRaces:['Δεν βρέθηκαν αγώνες. Χρειάζεται σήμα.','No events found. Needs a connection.'],hqNotIn:['Ο αριθμός δεν είναι στον αγώνα','Number not in this event'],liveOn:['Αποστολή θέσης','Share position'],liveSub:['Traccar · θέλει δεδομένα','Traccar · needs data'],server:['Server','Server'],devId:['ID συσκευής','Device ID'],every:['Κάθε','Every'],
  more:['Λοιπά','More'],keys:['Κουμπιά Bluetooth','Bluetooth buttons'],demo:['Demo GPS','Demo GPS'],demoSub:['Δοκιμή χωρίς οδήγηση','Test without driving'],wipe:['Μηδενισμός όλων','Reset everything'],
  keysHint:['<b>Volume Up / ↑ / Next</b> · μηδέν Τριπ 1<br><b>Volume Down / ↓ / Prev</b> · μηδέν Τριπ 2<br><i>Τα κουμπιά έντασης του κινητού αλλάζουν κανονικά την ένταση· μόνο του Bluetooth κουμπιού μηδενίζουν τα τριπ.</i><br><b>→ / ←</b> · Τριπ 1 + / − (στα pacenotes: επόμενη / επανάληψη)<br><b>Enter / Play</b> · Εκκίνηση/Τερματισμός ειδικής, Σημείο ελέγχου, Χτύπημα ΣΕΧ','<b>Volume Up / ↑ / Next</b> · reset Trip 1<br><b>Volume Down / ↓ / Prev</b> · reset Trip 2<br><i>The phone’s own volume buttons change the volume as usual; only a Bluetooth button resets the trips.</i><br><b>→ / ←</b> · Trip 1 + / − (pacenotes: next / repeat)<br><b>Enter / Play</b> · Stage start/finish, Time control, Check-in'],
  nTrip:['Τριπ','Trip'],nStage:['Ειδική','Stage'],nNotes:['Recce','Recce'],nMap:['Χάρτης','Map'],nMenu:['Μενού','Menu'],
@@ -1252,9 +1256,11 @@ function demo(on){clearInterval(demoT);demoT=null;G.last=null;if(!on)return;
 
 /* ================= live tracking ================= */
 let trkLast=0,trkSent=0;
-function liveTick(){if(!S.trkOn||!S.trkUrl||!S.trkId||!G.fix||G.fix.sim)return;const now=Date.now();if(now-trkLast<Math.max(2,S.trkInt)*1000)return;trkLast=now;
+function liveTick(){if(!S.trkOn||!(S.hqRace||(S.trkUrl&&S.trkId))||!G.fix||G.fix.sim)return;const now=Date.now();if(now-trkLast<Math.max(2,S.trkInt)*1000)return;trkLast=now;
  const f=G.fix;const q=`id=${encodeURIComponent(S.trkId)}&lat=${f.lat.toFixed(6)}&lon=${f.lon.toFixed(6)}&timestamp=${Math.round(f.t/1000)}&speed=${(G.spd*1.943844).toFixed(1)}&bearing=${Math.round(G.hdg||0)}&altitude=${Math.round(f.alt||0)}&accuracy=${Math.round(f.acc)}`;
- const url=S.trkUrl.trim().replace(/\/+$/,'')+'/?'+q;
+ const hq=S.hqRace&&(S.hqWho==='post'?S.hqPost:S.hqNo);   /* Race HQ: κατευθείαν στον αγώνα, χωρίς Tracker ID στο Κέντρο */
+ const url=S.hqRace?(hq?`https://racehq.gr/trip/pos?race=${encodeURIComponent(S.hqRace)}&${S.hqWho==='post'?'post':'no'}=${encodeURIComponent(hq)}&lat=${f.lat.toFixed(6)}&lon=${f.lon.toFixed(6)}&t=${f.t}&spd=${G.spd.toFixed(1)}&acc=${Math.round(f.acc)}`:''):S.trkUrl.trim().replace(/\/+$/,'')+'/?'+q;
+ if(!url)return;
  try{if(window.Android&&Android.httpGet)Android.httpGet(url);else fetch(url,{mode:'no-cors'}).catch(()=>{});trkSent=now}catch(e){}}
 
 /* ================= sheet ================= */
@@ -1335,7 +1341,10 @@ $('#liEdit').onclick=()=>{const li=D.li;sheet(t('timeCard'),`
 function setForm(){
  $$('.seg[data-s]').forEach(g=>g.querySelectorAll('button').forEach(b=>b.classList.toggle('on',String(S[g.dataset.s])===b.dataset.v)));
  $$('.sw[data-sw]').forEach(b=>b.classList.toggle('on',!!S[b.dataset.sw]));
- $('#calIn').value=S.cal;$('#trkUrl').value=S.trkUrl;$('#trkId').value=S.trkId;
+ $('#calIn').value=S.cal;$('#trkUrl').value=S.trkUrl;$('#trkId').value=S.trkId;$('#hqNo').value=S.hqNo;
+ $('#hqRaceV').textContent=S.hqRace?S.hqRaceName:t('hqNone');$('#hqPostV').textContent=S.hqPost?S.hqPostName:t('hqPick');
+ $('#hqWhoRow').hidden=$('#hqNoRow').hidden=$('#hqPostRow').hidden=!S.hqRace;if(S.hqRace){$('#hqNoRow').hidden=S.hqWho!=='crew';$('#hqPostRow').hidden=S.hqWho!=='post'}
+ $('#trkUrlRow').hidden=$('#trkIdRow').hidden=!!S.hqRace;
  document.documentElement.dataset.theme=S.theme;
 }
 document.addEventListener('click',e=>{
@@ -1349,6 +1358,20 @@ document.addEventListener('click',e=>{
 $('#calIn').addEventListener('change',e=>{const n=num(e.target.value);if(n&&n>0.5&&n<1.5){S.cal=n;save()}else e.target.value=S.cal});
 $('#trkUrl').addEventListener('change',e=>{S.trkUrl=e.target.value.trim();save()});
 $('#trkId').addEventListener('change',e=>{S.trkId=e.target.value.trim();save()});
+/* Race HQ (από 1.5.0): ο αγώνας και ο αριθμός/η θέση διαλέγονται εδώ· η θέση πάει στο racehq.gr και φαίνεται στο Live Tracking χωρίς ρύθμιση στο Κέντρο */
+$('#hqNo').addEventListener('change',e=>{S.hqNo=e.target.value.trim();save()});
+const HQ='https://racehq.gr';
+$('#hqRace').addEventListener('click',()=>{sheet(t('hqRace'),'<div class="plist" id="hqL"><div class="hint">…</div></div>',box=>{
+ fetch(HQ+'/marshal/races',{cache:'no-store'}).then(r=>r.json()).then(j=>{const l=(j.races||[]).filter(r=>r.phase!=='past');
+  box.querySelector('#hqL').innerHTML=`<div class="it" data-hq=""><span>${t('hqNone')}</span></div>`+(l.map(r=>`<div class="it" data-hq="${r.id}" data-n="${(r.name||'').replace(/"/g,'&quot;')}"><span><b>${r.name||''}</b><small>${[r.from,r.place].filter(Boolean).join(' · ')}</small></span></div>`).join('')||`<div class="hint">${t('hqNoRaces')}</div>`)})
+ .catch(()=>{box.querySelector('#hqL').innerHTML=`<div class="it" data-hq=""><span>${t('hqNone')}</span></div><div class="hint">${t('hqNoRaces')}</div>`});
+ box.addEventListener('click',e=>{const it=e.target.closest('[data-hq]');if(!it)return;S.hqRace=it.dataset.hq;S.hqRaceName=it.dataset.n||'';S.hqPost='';S.hqPostName='';save();setForm();closeSheet()})})});
+$('#hqPostRow').addEventListener('click',()=>{if(!S.hqRace)return;sheet(t('hqPost'),'<div class="plist" id="hqP"><div class="hint">…</div></div>',box=>{
+ fetch(HQ+'/marshal/race/'+encodeURIComponent(S.hqRace),{cache:'no-store'}).then(r=>r.json()).then(j=>{const seen={};let h='';
+  (j.stages||[]).forEach(st=>{const g=st.group||st.id;if(seen[g])return;seen[g]=1;(st.posts||[]).forEach(p=>{h+=`<div class="it" data-post="${p.id}" data-n="${(st.code+' · '+(p.label||'')).replace(/"/g,'&quot;')}"><span><b>${st.code} · ${p.label||''}</b><small>${p.km!=null?'χλμ '+String(p.km).replace('.',','):''}</small></span></div>`})});
+  box.querySelector('#hqP').innerHTML=h||`<div class="hint">${t('hqNoRaces')}</div>`})
+ .catch(()=>{box.querySelector('#hqP').innerHTML=`<div class="hint">${t('hqNoRaces')}</div>`});
+ box.addEventListener('click',e=>{const it=e.target.closest('[data-post]');if(!it)return;S.hqPost=it.dataset.post;S.hqPostName=it.dataset.n||'';save();setForm();closeSheet()})})});
 function trkLen(){let d=0;for(let i=1;i<TRK.length;i++)d+=hav({lat:TRK[i-1][0],lon:TRK[i-1][1]},{lat:TRK[i][0],lon:TRK[i][1]});return d}
 function recUI(){const b=$('#mMore');if(b)b.classList.toggle('rec',rec)}
 function toggleRec(){rec=!rec;save();recUI();toast(rec?t('recOn'):t('recOff'));beep(rec?1200:800,.12)}
@@ -1696,7 +1719,7 @@ function copyText(txt){if(!txt)return;let ok=false;try{const a=document.createEl
 document.addEventListener('click',e=>{if(e.target.closest('[data-copy]'))copyText(coStr())});
 
 /* ================= updates ================= */
-const WEBV='1.4.0';
+const WEBV='1.5.0';
 function appInfo(){try{if(window.Android&&Android.appInfo){const [n,c,w]=Android.appInfo().split('|');return{n,c:+c,w}}}catch(e){}return{n:'web',c:0,w:WEBV}}
 function showUpd(title,notes,btn,fn){$('#updT').textContent=title;$('#updN').textContent=notes||'';const b=$('#updGo');b.textContent=btn;b.onclick=fn;$('#upd').hidden=false}
 $('#updX').onclick=()=>$('#upd').hidden=true;
